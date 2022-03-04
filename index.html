@@ -1,670 +1,610 @@
-<html lang="en">
-
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Graphite</title>
-    <script defer="defer" src="index.bundle.js"></script>
-    <style>
-        .amenu__item {
-            word-wrap: normal;
+    <!-- <script defer="defer" src="index.bundle.js"></script> -->
+    <style>@font-face {
+        font-family: "San Francisco";
+        font-weight: 400;
+        src: url("file://pdc/%D1%81%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D1%8B/195/%D0%95%D1%80%D1%88%D0%BE%D0%B2/3%20%D0%BA%D1%83%D1%80%D1%81/2sem/iphone13-main/img/SFProDisplay-Regular.woff2") format("woff2"),
+        url("file://pdc/%D1%81%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D1%8B/195/%D0%95%D1%80%D1%88%D0%BE%D0%B2/3%20%D0%BA%D1%83%D1%80%D1%81/2sem/iphone13-main/img/SFProDisplay-Regular.woff") format("woff");
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "San Francisco";
+        font-weight: 300;
+        src: url("file://pdc/%D1%81%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D1%8B/195/%D0%95%D1%80%D1%88%D0%BE%D0%B2/3%20%D0%BA%D1%83%D1%80%D1%81/2sem/iphone13-main/img/SFProDisplay-Thin.woff2") format("woff2"),
+        url("file://pdc/%D1%81%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D1%8B/195/%D0%95%D1%80%D1%88%D0%BE%D0%B2/3%20%D0%BA%D1%83%D1%80%D1%81/2sem/iphone13-main/img/SFProDisplay-Thin.woff") format("woff");
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "San Francisco";
+        font-weight: 600;
+        src: url("file://pdc/%D1%81%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D1%8B/195/%D0%95%D1%80%D1%88%D0%BE%D0%B2/3%20%D0%BA%D1%83%D1%80%D1%81/2sem/iphone13-main/img/SFProDisplay-Semibold.woff2") format("woff2"),
+        url("file://pdc/%D1%81%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D1%8B/195/%D0%95%D1%80%D1%88%D0%BE%D0%B2/3%20%D0%BA%D1%83%D1%80%D1%81/2sem/iphone13-main/img/SFProDisplay-Semibold.woff") format("woff");
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "San Francisco";
+        font-weight: 700;
+        src: url("file://pdc/%D1%81%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D1%8B/195/%D0%95%D1%80%D1%88%D0%BE%D0%B2/3%20%D0%BA%D1%83%D1%80%D1%81/2sem/iphone13-main/img/SFProDisplay-Bold.woff2") format("woff2"),
+        url("file://pdc/%D1%81%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D1%8B/195/%D0%95%D1%80%D1%88%D0%BE%D0%B2/3%20%D0%BA%D1%83%D1%80%D1%81/2sem/iphone13-main/img/SFProDisplay-Bold.woff") format("woff");
+        font-display: swap;
+    }
+
+
+    html {
+        box-sizing: border-box;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: inherit;
+    }
+
+    body {
+        min-width: 320px;
+        margin: 0;
+        background-color: #fff; /* под проект */
+        font-family: "San Francisco", Arial, sans-serif; /* в "" свой шрифт под проект*/
+
+        font-size: 16px;
+        font-weight: 400;
+        color: black;
+        line-height: 1;
+    }
+
+    button, input {
+        font: inherit;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    h1, h2, h3, p, ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    .button {
+        background-color: transparent;
+        border: 1px solid black;
+        border-radius: 15px;
+        padding: 8px 20px;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 32px;
+    }
+
+    .button_buy {
+        background-color: #FE3B3B;
+        border: 1px solid #FE3B3B;
+        color: #FFFFFF;
+    }
+
+    .main-title {
+        font-weight: 700;
+        font-size: 24px;
+        margin-bottom: 40px;
+    }
+
+
+    .container {
+        max-width: 950px;
+        margin: 0 auto;
+        padding: 30px 15px;
+    }
+
+    .visually-hidden {
+        position: absolute !important;
+        clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+        clip: rect(1px, 1px, 1px, 1px);
+        padding: 0 !important;
+        border: 0 !important;
+        height: 1px !important;
+        width: 1px !important;
+        overflow: hidden;
+    }
+
+    /* при работе с float */
+
+    .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+
+    /*header*/
+
+    .header__wrap {
+        max-width: 1130px;
+    }
+
+    .header-menu {
+        display: flex;
+        align-items: center;
+    }
+
+    .header-menu__logo {
+        max-width: 34px;
+        margin-right: auto;
+    }
+
+    .header-menu__list {
+        display: flex;
+        align-items: center;
+    }
+
+    .header-menu__item {
+        margin-right: 30px;
+        white-space: nowrap;
+    }
+
+    .header-menu__item a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        display: block;
+    }
+
+    .header-menu__burger {
+        margin-left: auto;
+    }
+
+    @media (max-width: 375px) {
+        .logo {
+            margin-right: 10px;
         }
+    }
 
 
-        .amenu__burger {
-            position: relative;
-        }
+    /* present */
 
-        .amenu__burger-open .amenu__burger-list {
-            display: block;
-        }
+    .present {
+        text-align: left;
+        padding-bottom: 90px;
+        padding-top: 30px;
+    }
 
-        .amenu__burger-btn {
-            display: none;
-            width: 24px;
-            height: 24px;
-            border: none;
-            cursor: pointer;
-            background-size: contain;
-            background-color: transparent;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-image: url("data:image/svg+xml,%3Csvg id=%27Capa_1%27 enable-background=%27new 0 0 551.13 551.13%27 height=%27512%27 viewBox=%270 0 551.13 551.13%27 width=%27512%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath id=%27path-1_20_%27 d=%27m275.565 137.783c-37.995 0-68.891-30.897-68.891-68.891 0-37.995 30.897-68.892 68.891-68.892 37.995 0 68.891 30.897 68.891 68.891 0 37.995-30.896 68.892-68.891 68.892zm0-103.337c-18.989 0-34.446 15.457-34.446 34.446s15.457 34.446 34.446 34.446 34.446-15.457 34.446-34.446-15.457-34.446-34.446-34.446z%27 transform=%27translate%286%29%27/%3E%3Cpath id=%27path-1_19_%27 d=%27m275.565 344.456c-37.995 0-68.891-30.897-68.891-68.891 0-37.995 30.897-68.891 68.891-68.891 37.995 0 68.891 30.897 68.891 68.891 0 37.995-30.896 68.891-68.891 68.891zm0-103.337c-18.989 0-34.446 15.457-34.446 34.446s15.457 34.446 34.446 34.446 34.446-15.457 34.446-34.446-15.457-34.446-34.446-34.446z%27 transform=%27translate%286 6%29%27/%3E%3Cpath id=%27path-1_18_%27 d=%27m275.565 551.13c-37.995 0-68.891-30.897-68.891-68.891 0-37.995 30.897-68.891 68.891-68.891 37.995 0 68.891 30.897 68.891 68.891s-30.896 68.891-68.891 68.891zm0-103.337c-18.989 0-34.446 15.457-34.446 34.446s15.457 34.446 34.446 34.446 34.446-15.457 34.446-34.446-15.457-34.446-34.446-34.446z%27 transform=%27translate%286 12%29%27/%3E%3C/svg%3E");
-            transition: background-image 300ms;
-        }
+    .present__title {
+        font-size: 72px;
+        margin-bottom: 40px;
+    }
 
-        .amenu__burger-btn.amenu__burger-btn_active {
-            display: block;
-        }
+    .present__description {
+        font-size: 36px;
+        line-height: 43px;
+        max-width: 865px;
+    }
 
+    .present__img {
+        max-width: 440px;
+        float: left;
+        margin: 0 auto;
+    }
 
-        .amenu__burger-btn:hover {
-            background-image: url("data:image/svg+xml,%3Csvg id=%27Capa_1%27 enable-background=%27new 0 0 515.555 515.555%27 height=%27512%27 viewBox=%270 0 515.555 515.555%27 width=%27512%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27m303.347 18.875c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0%27/%3E%3Cpath d=%27m303.347 212.209c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0%27/%3E%3Cpath d=%27m303.347 405.541c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0%27/%3E%3C/svg%3E");
-        }
-
-        .amenu__burger-list {
-            position: absolute;
-            right: 0;
-            background-color: #fff;
-            border: 1px solid black;
-            list-style: none;
-            display: none;
-            padding: 30px;
-        }
-    </style>
-    <style>
-        @font-face {
-            font-family: "San Francisco";
-            font-weight: 400;
-            src: url("file://pdc/%D1%81%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D1%8B/195/%D0%95%D1%80%D1%88%D0%BE%D0%B2/3%20%D0%BA%D1%83%D1%80%D1%81/2sem/iphone13-main/img/SFProDisplay-Regular.woff2") format("woff2"),
-                url("file://pdc/%D1%81%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D1%8B/195/%D0%95%D1%80%D1%88%D0%BE%D0%B2/3%20%D0%BA%D1%83%D1%80%D1%81/2sem/iphone13-main/img/SFProDisplay-Regular.woff") format("woff");
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: "San Francisco";
-            font-weight: 300;
-            src: url("file://pdc/%D1%81%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D1%8B/195/%D0%95%D1%80%D1%88%D0%BE%D0%B2/3%20%D0%BA%D1%83%D1%80%D1%81/2sem/iphone13-main/img/SFProDisplay-Thin.woff2") format("woff2"),
-                url("file://pdc/%D1%81%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D1%8B/195/%D0%95%D1%80%D1%88%D0%BE%D0%B2/3%20%D0%BA%D1%83%D1%80%D1%81/2sem/iphone13-main/img/SFProDisplay-Thin.woff") format("woff");
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: "San Francisco";
-            font-weight: 600;
-            src: url("file://pdc/%D1%81%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D1%8B/195/%D0%95%D1%80%D1%88%D0%BE%D0%B2/3%20%D0%BA%D1%83%D1%80%D1%81/2sem/iphone13-main/img/SFProDisplay-Semibold.woff2") format("woff2"),
-                url("file://pdc/%D1%81%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D1%8B/195/%D0%95%D1%80%D1%88%D0%BE%D0%B2/3%20%D0%BA%D1%83%D1%80%D1%81/2sem/iphone13-main/img/SFProDisplay-Semibold.woff") format("woff");
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: "San Francisco";
-            font-weight: 700;
-            src: url("file://pdc/%D1%81%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D1%8B/195/%D0%95%D1%80%D1%88%D0%BE%D0%B2/3%20%D0%BA%D1%83%D1%80%D1%81/2sem/iphone13-main/img/SFProDisplay-Bold.woff2") format("woff2"),
-                url("file://pdc/%D1%81%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D1%8B/195/%D0%95%D1%80%D1%88%D0%BE%D0%B2/3%20%D0%BA%D1%83%D1%80%D1%81/2sem/iphone13-main/img/SFProDisplay-Bold.woff") format("woff");
-            font-display: swap;
-        }
-
-
-        html {
-            box-sizing: border-box;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: inherit;
-        }
-
-        body {
-            min-width: 320px;
-            margin: 0;
-            background-color: #fff;
-            /* под проект */
-            font-family: "San Francisco", Arial, sans-serif;
-            /* в "" свой шрифт под проект*/
-
-            font-size: 16px;
-            font-weight: 400;
-            color: black;
-            line-height: 1;
-        }
-
-        button,
-        input {
-            font: inherit;
-        }
-
-        button {
-            cursor: pointer;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        h1,
-        h2,
-        h3,
-        p,
-        ul {
-            padding: 0;
-            margin: 0;
-        }
-
-        .button {
-            background-color: transparent;
-            border: 1px solid black;
-            border-radius: 15px;
-            padding: 8px 20px;
-            font-weight: bold;
-            font-size: 18px;
-            line-height: 32px;
-        }
-
-        .button_buy {
-            background-color: #FE3B3B;
-            border: 1px solid #FE3B3B;
-            color: #FFFFFF;
-        }
-
-        .main-title {
-            font-weight: 700;
-            font-size: 24px;
-            margin-bottom: 40px;
-        }
-
-
-        .container {
-            max-width: 950px;
-            margin: 0 auto;
-            padding: 30px 15px;
-        }
-
-        .visually-hidden {
-            position: absolute !important;
-            clip: rect(1px 1px 1px 1px);
-            /* IE6, IE7 */
-            clip: rect(1px, 1px, 1px, 1px);
-            padding: 0 !important;
-            border: 0 !important;
-            height: 1px !important;
-            width: 1px !important;
-            overflow: hidden;
-        }
-
-        /* при работе с float */
-
-        .clearfix::after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-
-        /*header*/
-
-        .header__wrap {
-            max-width: 1130px;
-        }
-
-        .header-menu {
-            display: flex;
-            align-items: center;
-        }
-
-        .header-menu__logo {
-            max-width: 34px;
-            margin-right: auto;
-        }
-
-        .header-menu__list {
-            display: flex;
-            align-items: center;
-        }
-
-        .header-menu__item {
-            margin-right: 30px;
-            white-space: nowrap;
-        }
-
-        .header-menu__item a {
-            padding-top: 10px;
-            padding-bottom: 10px;
-            display: block;
-        }
-
-        .header-menu__burger {
-            margin-left: auto;
-        }
-
-        @media (max-width: 375px) {
-            .logo {
-                margin-right: 10px;
-            }
-        }
-
-
-        /* present */
+    @media (max-width: 968px) {
 
         .present {
-            text-align: center;
-            padding-bottom: 90px;
-            padding-top: 30px;
+            padding-bottom: 50px;
         }
-
         .present__title {
-            font-size: 72px;
-            margin-bottom: 40px;
+            font-size: 54px;
+            margin-bottom: 30px;
         }
 
         .present__description {
-            font-size: 36px;
-            line-height: 43px;
-            max-width: 865px;
-            margin: 0 auto 100px;
+            font-size: 28px;
+            line-height: 32px;
+            max-width: 670px;
         }
 
         .present__img {
-            max-width: 440px;
-            margin: 0 auto;
+            max-width: 500px;
+        }
+    }
+
+    @media (max-width: 698px) {
+        .present__title {
+            font-size: 48px;
         }
 
-        @media (max-width: 968px) {
-
-            .present {
-                padding-bottom: 50px;
-            }
-
-            .present__title {
-                font-size: 54px;
-                margin-bottom: 30px;
-            }
-
-            .present__description {
-                font-size: 28px;
-                line-height: 32px;
-                max-width: 670px;
-            }
-
-            .present__img {
-                max-width: 380px;
-            }
+        .present__description {
+            font-size: 24px;
+            line-height: 28px;
+            max-width: 570px;
         }
 
-        @media (max-width: 698px) {
-            .present__title {
-                font-size: 48px;
-            }
+        .present__img {
+            max-width: 400px;
+        }
+    }
 
-            .present__description {
-                font-size: 24px;
-                line-height: 28px;
-                max-width: 570px;
-                margin-bottom: 20px;
-            }
-
-            .present__img {
-                max-width: 300px;
-            }
+    @media (max-width: 520px) {
+        .present__title {
+            font-size: 38px;
         }
 
-        @media (max-width: 520px) {
-            .present__title {
-                font-size: 38px;
-            }
-
-            .present__description {
-                font-size: 18px;
-                line-height: 24px;
-                max-width: 304px;
-            }
-
-            .present__img {
-                max-width: 280px;
-            }
+        .present__description {
+            font-size: 18px;
+            line-height: 24px;
+            max-width: 304px;
         }
 
+        .present__img {
+            max-width: 500px;
+        }
+    }
 
-        .card {
-            padding-top: 90px;
+
+    .card {
+        padding-top: 90px;
+    }
+
+    .card__wrap {
+        display: flex;
+        align-items: center;
+        margin: 0 10;
+    }
+
+    .card__image {
+        max-width: 300px;
+        margin: 0 70px 0 0;
+    }
+
+    .card__image_item {
+        width: 230px;
+        max-width: none;
+    }
+
+    .card-details__title {
+        font-size: 36px;
+        line-height: 43px;
+    }
+
+    .card-details__wrap-btn:not(:last-child) {
+        margin-right: 24px;
+    }
+
+    .card-detail__buttons {
+        display: flex;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 40px;
+        white-space: nowrap;
+    }
+
+    .card-detail__change {
+        border: 1px solid transparent;
+        background-color: transparent;
+        padding: 11px 16px;
+    }
+
+    .card-detail__change.active {
+        color: #FE3B3B;
+        border-bottom: 1px solid #FE3B3B;
+    }
+
+    .card-details__description {
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 21px;
+        margin-bottom: 20px;
+    }
+
+    .card-details__description-list {
+        margin-bottom: 18px;
+    }
+
+    .card-details__footer {
+        display: flex;
+        align-items: center;
+    }
+
+    .card-details__price {
+        min-width: 120px;
+        font-weight: 700;
+        font-size: 24px;
+        margin-right: 60px;
+    }
+
+    .card-details__link-characteristics {
+        display: block;
+        color: #4F80FF;
+        font-size: 18px;
+        line-height: 21px;
+        margin-bottom: 60px;
+    }
+
+    .card-details__button_buy {
+        margin-right: 28px;
+    }
+
+    @media (max-width: 968px) {
+        .card{
+            padding-top: 50px;
         }
 
         .card__wrap {
-            display: flex;
-            align-items: center;
+            flex-direction: column;
         }
 
         .card__image {
-            max-width: 300px;
-            margin: 0 70px 0 0;
+            order: 1;
+            margin-right: 0;
         }
 
-        .card__image_item {
-            width: 230px;
-            max-width: none;
+        .card-details {
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+    }
+
+    @media (max-width: 698px) {
+        .card-details {
+            max-width: 400px;
+            margin-bottom: 20px;
+
         }
 
         .card-details__title {
-            font-size: 36px;
-            line-height: 43px;
-        }
-
-        .card-details__wrap-btn:not(:last-child) {
-            margin-right: 24px;
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
         }
 
         .card-detail__buttons {
-            display: flex;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 40px;
-            white-space: nowrap;
-        }
-
-        .card-detail__change {
-            border: 1px solid transparent;
-            background-color: transparent;
-            padding: 11px 16px;
-        }
-
-        .card-detail__change.active {
-            color: #FE3B3B;
-            border-bottom: 1px solid #FE3B3B;
-        }
-
-        .card-details__description {
-            font-weight: 300;
-            font-size: 18px;
-            line-height: 21px;
-            margin-bottom: 20px;
-        }
-
-        .card-details__description-list {
-            margin-bottom: 18px;
-        }
-
-        .card-details__footer {
-            display: flex;
+            flex-direction: column;
             align-items: center;
+        }
+
+        .card-details__wrap-btn:not(:last-child) {
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+        .card-details__footer {
+            flex-wrap: wrap;
+            align-items: start;
         }
 
         .card-details__price {
-            min-width: 120px;
-            font-weight: 700;
-            font-size: 24px;
-            margin-right: 60px;
-        }
-
-        .card-details__link-characteristics {
-            display: block;
-            color: #4F80FF;
-            font-size: 18px;
-            line-height: 21px;
-            margin-bottom: 60px;
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 30px;
         }
 
         .card-details__button_buy {
-            margin-right: 28px;
-        }
-
-        @media (max-width: 968px) {
-            .card {
-                padding-top: 50px;
-            }
-
-            .card__wrap {
-                flex-direction: column;
-            }
-
-            .card__image {
-                order: 1;
-                margin-right: 0;
-            }
-
-            .card-details {
-                max-width: 600px;
-                margin-bottom: 30px;
-            }
-        }
-
-        @media (max-width: 698px) {
-            .card-details {
-                max-width: 400px;
-                margin-bottom: 20px;
-
-            }
-
-            .card-details__title {
-                text-align: center;
-                font-size: 28px;
-                margin-bottom: 30px;
-            }
-
-            .card-detail__buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .card-details__wrap-btn:not(:last-child) {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-
-            .card-details__footer {
-                flex-wrap: wrap;
-                align-items: start;
-            }
-
-            .card-details__price {
-                width: 100%;
-                margin-right: 0;
-                margin-bottom: 30px;
-            }
-
-            .card-details__button_buy {
-                margin-bottom: 30px;
-            }
-
-
+            margin-bottom: 30px;
         }
 
 
-        .characteristics__list {
-            max-width: 920px;
-        }
-
-        .characteristics__item {
-            margin-bottom: 15px;
-        }
-
-        .characteristics__title {
-            position: relative;
-            width: 100%;
-            padding: 12px 30px;
-            background-color: transparent;
-            text-align: left;
-        }
-
-        .characteristics__title:after {
-            content: '';
-            position: absolute;
-            right: 15px;
-            bottom: 15px;
-            width: 17px;
-            height: 17px;
-            border: 1px solid;
-            border-color: transparent #000 #000 transparent;
-            transform: rotate(45deg);
-            transition: border-color 0.4s ease-in-out, bottom 0.4s ease-in-out;
-        }
-
-        .characteristics__title.active:after {
-            border-color: #000 transparent transparent #000;
-            bottom: 5px;
-        }
-
-        .characteristics__description {
-            margin-top: -2px;
-            border: 1px solid;
-            border-color: transparent #000 #000 #000;
-            height: 0;
-            overflow: hidden;
-            transition: height .4s ease-in-out;
-        }
-
-        .characteristics__title:focus {
-            outline: none;
-        }
-
-        .characteristics__description.active {
-            height: auto;
-        }
-
-        .characteristics__item-description {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .characteristics__item-description {
-            padding: 15px 0;
-        }
-
-        .characteristics__item-description p {
-            margin: 0 15px;
-        }
-
-        .characteristics__item-description p:last-child {
-            text-align: right;
-        }
-
-        .characteristics__item-description:first-child {
-            padding-top: 30px;
-        }
-
-        .characteristics__item-description:last-child {
-            padding-bottom: 30px;
-        }
+    }
 
 
+    .characteristics__list {
+        max-width: 920px;
+    }
+
+    .characteristics__item {
+        margin-bottom: 15px;
+    }
+
+    .characteristics__title {
+        position: relative;
+        width: 100%;
+        padding: 12px 30px;
+        background-color: transparent;
+        text-align: left;
+    }
+
+    .characteristics__title:after {
+        content: '';
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+        width: 17px;
+        height: 17px;
+        border: 1px solid;
+        border-color: transparent #000 #000 transparent;
+        transform: rotate(45deg);
+        transition: border-color 0.4s ease-in-out, bottom 0.4s ease-in-out;
+    }
+
+    .characteristics__title.active:after {
+        border-color: #000 transparent transparent #000;
+        bottom: 5px;
+    }
+
+    .characteristics__description {
+        margin-top: -2px;
+        border: 1px solid;
+        border-color: transparent #000 #000 #000;
+        height: 0;
+        overflow: hidden;
+        transition: height .4s ease-in-out;
+    }
+
+    .characteristics__title:focus {
+        outline:none;
+    }
+
+    .characteristics__description.active {
+        height: auto;
+    }
+
+    .characteristics__item-description {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .characteristics__item-description {
+        padding: 15px 0;
+    }
+
+    .characteristics__item-description p {
+        margin: 0 15px;
+    }
+
+    .characteristics__item-description p:last-child {
+        text-align: right;
+    }
+
+    .characteristics__item-description:first-child {
+        padding-top: 30px;
+    }
+
+    .characteristics__item-description:last-child {
+        padding-bottom: 30px;
+    }
 
 
+
+
+    .cross-sell__list {
+        display: flex;
+        flex-wrap: wrap;
+
+        justify-content: space-between;
+    }
+
+    .cross-sell__item {
+        display: flex;
+        flex-direction: column;
+        max-width: 200px;
+        min-height: 360px;
+        margin-bottom: 30px;
+    }
+
+    .cross-sell__image {
+        box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.1);
+        margin-bottom: 12px;
+    }
+
+    .cross-sell__title {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        margin-bottom: 10px;
+    }
+
+    .cross-sell__price {
+        font-weight: 700;
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .cross-sell__button {
+        margin-top: auto;
+        text-align: center;
+        max-width: 104px;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 32px;
+
+    }
+
+    @media (max-width: 968px) {
         .cross-sell__list {
-            display: flex;
-            flex-wrap: wrap;
-
-            justify-content: space-between;
+            max-width: 560px;
+            justify-content: center;
+            margin: 0 auto;
         }
 
         .cross-sell__item {
-            display: flex;
-            flex-direction: column;
-            max-width: 200px;
-            min-height: 360px;
-            margin-bottom: 30px;
+            margin: 0 30px 30px;
         }
 
-        .cross-sell__image {
-            box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.1);
-            margin-bottom: 12px;
-        }
+    }
 
-        .cross-sell__title {
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 17px;
-            margin-bottom: 10px;
-        }
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
 
-        .cross-sell__price {
-            font-weight: 700;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0,0,0,0.4);
+    }
 
-        .cross-sell__button {
-            margin-top: auto;
-            text-align: center;
-            max-width: 104px;
-            font-weight: 700;
-            font-size: 18px;
-            line-height: 32px;
-
-        }
-
-        @media (max-width: 968px) {
-            .cross-sell__list {
-                max-width: 560px;
-                justify-content: center;
-                margin: 0 auto;
-            }
-
-            .cross-sell__item {
-                margin: 0 30px 30px;
-            }
-
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .modal.open {
-            display: flex;
-        }
+    .modal.open {
+        display: flex;
+    }
 
 
-        .modal__block {
-            position: relative;
-            max-width: 640px;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.1);
-        }
+    .modal__block {
+        position: relative;
+        max-width: 640px;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.1);
+    }
 
-        .modal__subtitle {
-            font-size: 14px;
-            margin-bottom: 14px;
-        }
+    .modal__subtitle {
+        font-size: 14px;
+        margin-bottom: 14px;
+    }
 
-        .modal__title {
-            font-size: 36px;
-            line-height: 43px;
-            margin-bottom: 30px;
-        }
+    .modal__title {
+        font-size: 36px;
+        line-height: 43px;
+        margin-bottom: 30px;
+    }
 
-        .modal__close {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            background-color: transparent;
-            border: none;
-            font-size: 20px;
-        }
+    .modal__close {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+    }
 
-        .modal__label {
-            display: flex;
-            margin-bottom: 12px;
-            align-items: center;
-        }
+    .modal__label {
+        display: flex;
+        margin-bottom: 12px;
+        align-items: center;
+    }
 
-        .modal__label-text {
-            min-width: 105px;
-            font-size: 14px;
-            margin-right: 20px;
-        }
+    .modal__label-text {
+        min-width: 105px;
+        font-size: 14px;
+        margin-right: 20px;
+    }
 
-        .modal__input {
-            flex-grow: 1;
-            border-style: solid;
-            border-width: 1px;
-            border-color: transparent transparent #000 transparent;
-        }
+    .modal__input {
+        flex-grow: 1;
+        border-style: solid;
+        border-width: 1px;
+        border-color: transparent transparent #000 transparent ;
+    }
 
-        .modal__submit {
-            margin-top: 20px;
-        }
+    .modal__submit {
+        margin-top: 20px;
+    }
     </style>
 </head>
 
@@ -680,22 +620,19 @@
                     <li class="header-menu__item amenu__item"><a href="#">Отзывы</a></li>
                     <li class="header-menu__item amenu__item"><a href="#">Условия доставки</a></li>
                 </ul>
-                <div class="header-menu__burger amenu__burger" style="display: none;"><button
-                        class="amenu__burger-btn"></button>
+                <div class="header-menu__burger amenu__burger" style="display: none;"><button class="amenu__burger-btn"></button>
                     <ul class="amenu__burger-list"></ul>
-                </div>
+                <button class="amenu__burger-btn"></button><ul class="amenu__burger-list"></ul></div>
             </nav>
         </div>
     </header>
     <main>
         <section class="present" id="present">
             <div class="container">
-                <h1 class="present__title">iPhone13 Pro</h1>
-                <p class="present__description">Грандиозный апгрейд камер Pro. Режим «Киноэффект» делает из видео
-                    настоящее кино. Дисплей Super Retina XDR с технологией ProMotion для более быстрого и плавного
-                    взаимодействия. А15 Bionic — самый быстрый чип для iPhone. Прочный корпус и огромный прирост ресурса
-                    аккумулятора.</p>
-                <figure class="present__img"><img src="img/iPhone-main.png" alt="iPhone12"></figure>
+                <h1 class="present__title">Ершов Владислав</h1>
+                <p class="present__description">UX/UI-ДИЗАЙНЕР</p>
+                    <p class="present__description">ВЕБ-РАЗРАБОТЧИК</p>
+                <figure class="present__img"><img src="img/arthas.jpg" alt="iPhone12" width="500px"></figure>
             </div>
         </section>
         <section class="card" id="card">
@@ -705,12 +642,9 @@
                 <div class="card-details">
                     <h2 class="card-details__title">Смартфон Apple iPhone 13 Pro 128GB Graphite</h2>
                     <ul class="card-detail__buttons">
-                        <li class="card-details__wrap-btn"><button class="card-detail__change active"
-                                type="button">Графитовый</button></li>
-                        <li class="card-details__wrap-btn"><button class="card-detail__change"
-                                type="button">Серебристый</button></li>
-                        <li class="card-details__wrap-btn"><button class="card-detail__change"
-                                type="button">Небесно-голубой</button></li>
+                        <li class="card-details__wrap-btn"><button class="card-detail__change active" type="button">Графитовый</button></li>
+                        <li class="card-details__wrap-btn"><button class="card-detail__change" type="button">Серебристый</button></li>
+                        <li class="card-details__wrap-btn"><button class="card-detail__change" type="button">Небесно-голубой</button></li>
                     </ul>
                     <div class="card-details__description">
                         <ul class="card-details__description-list description">
@@ -727,10 +661,7 @@
                         </ul><a class="card-details__link-characteristics" href="#characteristics">Полные
                             харакстеристики</a>
                         <div class="card-details__footer">
-                            <p class="card-details__price">60000₽</p><button
-                                class="button button_buy card-details__button_buy"
-                                data-button-buy="Оплата">Купить</button> <button
-                                class="button card-details__button_delivery" data-button-buy="Доставка и оплата">Купить
+                            <p class="card-details__price">60000₽</p><button class="button button_buy card-details__button_buy" data-button-buy="Оплата">Купить</button> <button class="button card-details__button_delivery" data-button-buy="Доставка и оплата">Купить
                                 с доставкой</button>
                         </div>
                     </div>
@@ -741,8 +672,7 @@
             <div class="container">
                 <h2 class="characteristics__main-title main-title">Характеристики</h2>
                 <ul class="characteristics__list">
-                    <li class="characteristics__item"><button class="characteristics__title"
-                            type="button">Дисплей</button>
+                    <li class="characteristics__item"><button class="characteristics__title" type="button">Дисплей</button>
                         <div class="characteristics__description">
                             <ul class="characteristics__list-description">
                                 <li class="characteristics__item-description">
@@ -792,8 +722,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="characteristics__item"><button class="characteristics__title"
-                            type="button">Фотокамера</button>
+                    <li class="characteristics__item"><button class="characteristics__title" type="button">Фотокамера</button>
                         <div class="characteristics__description">
                             <ul class="characteristics__list-description">
                                 <li class="characteristics__item-description">
@@ -839,8 +768,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="characteristics__item"><button class="characteristics__title"
-                            type="button">Связь</button>
+                    <li class="characteristics__item"><button class="characteristics__title" type="button">Связь</button>
                         <div class="characteristics__description">
                             <ul class="characteristics__list-description">
                                 <li class="characteristics__item-description">
@@ -878,8 +806,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="characteristics__item"><button class="characteristics__title"
-                            type="button">Процессор</button>
+                    <li class="characteristics__item"><button class="characteristics__title" type="button">Процессор</button>
                         <div class="characteristics__description">
                             <ul class="characteristics__list-description">
                                 <li class="characteristics__item-description">
@@ -893,8 +820,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="characteristics__item"><button class="characteristics__title"
-                            type="button">Память</button>
+                    <li class="characteristics__item"><button class="characteristics__title" type="button">Память</button>
                         <div class="characteristics__description">
                             <ul class="characteristics__list-description">
                                 <li class="characteristics__item-description">
@@ -908,8 +834,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="characteristics__item"><button class="characteristics__title"
-                            type="button">Мультимедиа</button>
+                    <li class="characteristics__item"><button class="characteristics__title" type="button">Мультимедиа</button>
                         <div class="characteristics__description">
                             <ul class="characteristics__list-description">
                                 <li class="characteristics__item-description">
@@ -931,8 +856,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="characteristics__item"><button class="characteristics__title"
-                            type="button">Система</button>
+                    <li class="characteristics__item"><button class="characteristics__title" type="button">Система</button>
                         <div class="characteristics__description">
                             <ul class="characteristics__list-description">
                                 <li class="characteristics__item-description">
@@ -947,8 +871,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="characteristics__item"><button class="characteristics__title"
-                            type="button">SIM-карта</button>
+                    <li class="characteristics__item"><button class="characteristics__title" type="button">SIM-карта</button>
                         <div class="characteristics__description">
                             <ul class="characteristics__list-description">
                                 <li class="characteristics__item-description">
@@ -962,8 +885,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="characteristics__item"><button class="characteristics__title"
-                            type="button">Питание</button>
+                    <li class="characteristics__item"><button class="characteristics__title" type="button">Питание</button>
                         <div class="characteristics__description">
                             <ul class="characteristics__list-description">
                                 <li class="characteristics__item-description">
@@ -993,8 +915,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="characteristics__item"><button class="characteristics__title"
-                            type="button">Корпус</button>
+                    <li class="characteristics__item"><button class="characteristics__title" type="button">Корпус</button>
                         <div class="characteristics__description">
                             <ul class="characteristics__list-description">
                                 <li class="characteristics__item-description">
@@ -1040,36 +961,28 @@
                 <h2 class="cross-sell__main-title main-title">Дополняют этот товар</h2>
                 <ul class="cross-sell__list">
                     <li>
-                        <article class="cross-sell__item"><img class="cross-sell__image"
-                                src="cross-sell-dbase/img/10024343b.jpg" alt="10024343b">
+                        <article class="cross-sell__item"><img class="cross-sell__image" src="cross-sell-dbase/img/10024343b.jpg" alt="10024343b">
                             <h3 class="cross-sell__title">Умная колонка с Алисой Яндекс.Станция черная</h3>
-                            <p class="cross-sell__price">12990₽</p><button type="button"
-                                class="button button_buy cross-sell__button">Купить</button>
+                            <p class="cross-sell__price">12990₽</p><button type="button" class="button button_buy cross-sell__button">Купить</button>
                         </article>
                     </li>
                     <li>
-                        <article class="cross-sell__item"><img class="cross-sell__image"
-                                src="cross-sell-dbase/img/30052979b.jpg" alt="30052979b">
+                        <article class="cross-sell__item"><img class="cross-sell__image" src="cross-sell-dbase/img/30052979b.jpg" alt="30052979b">
                             <h3 class="cross-sell__title">Смарт-часы Apple Watch S6 44mm Space Gray Aluminum Case with
                                 Black Sport Band</h3>
-                            <p class="cross-sell__price">39490₽</p><button type="button"
-                                class="button button_buy cross-sell__button">Купить</button>
+                            <p class="cross-sell__price">39490₽</p><button type="button" class="button button_buy cross-sell__button">Купить</button>
                         </article>
                     </li>
                     <li>
-                        <article class="cross-sell__item"><img class="cross-sell__image"
-                                src="cross-sell-dbase/img/50047745b.jpg" alt="50047745b">
+                        <article class="cross-sell__item"><img class="cross-sell__image" src="cross-sell-dbase/img/50047745b.jpg" alt="50047745b">
                             <h3 class="cross-sell__title">Наушники Apple EarPods with Lightning Connector</h3>
-                            <p class="cross-sell__price">1990₽</p><button type="button"
-                                class="button button_buy cross-sell__button">Купить</button>
+                            <p class="cross-sell__price">1990₽</p><button type="button" class="button button_buy cross-sell__button">Купить</button>
                         </article>
                     </li>
                     <li>
-                        <article class="cross-sell__item"><img class="cross-sell__image"
-                                src="cross-sell-dbase/img/50051752b.jpg" alt="50051752b">
+                        <article class="cross-sell__item"><img class="cross-sell__image" src="cross-sell-dbase/img/50051752b.jpg" alt="50051752b">
                             <h3 class="cross-sell__title">Флеш-диск для Apple Leef iBridge3 64 Гб, серебристый</h3>
-                            <p class="cross-sell__price">7190₽</p><button type="button"
-                                class="button button_buy cross-sell__button">Купить</button>
+                            <p class="cross-sell__price">7190₽</p><button type="button" class="button button_buy cross-sell__button">Купить</button>
                         </article>
                     </li>
                 </ul><button class="button cross-sell__add">Показать ещё</button>
@@ -1079,18 +992,11 @@
     <div class="modal">
         <div class="modal__block"><button class="modal__close">✘</button>
             <h2 class="modal__subtitle">Доставка и оплата</h2>
-            <form action=""><input class="modal__title-submit visually-hidden" name="name-good"
-                    value="Смартфон Apple iPhone 13 Pro 128GB Graphite" disabled="disabled">
-                <h3 class="modal__title">Смартфон Apple iPhone 13 Pro 128GB Graphite</h3><label
-                    class="modal__label"><span class="modal__label-text">Куда доставить</span> <input
-                        class="modal__input"></label> <label class="modal__label"><span
-                        class="modal__label-text">Кому</span> <input class="modal__input"></label> <label
-                    class="modal__label"><span class="modal__label-text">Телефон</span> <input
-                        class="modal__input"></label> <button type="submit"
-                    class="button button_buy modal__submit">Заказать доставку</button>
+            <form action=""><input class="modal__title-submit visually-hidden" name="name-good" value="Смартфон Apple iPhone 13 Pro 128GB Graphite" disabled="disabled">
+                <h3 class="modal__title">Смартфон Apple iPhone 13 Pro 128GB Graphite</h3><label class="modal__label"><span class="modal__label-text">Куда доставить</span> <input class="modal__input"></label> <label class="modal__label"><span class="modal__label-text">Кому</span> <input class="modal__input"></label> <label class="modal__label"><span class="modal__label-text">Телефон</span> <input class="modal__input"></label> <button type="submit" class="button button_buy modal__submit">Заказать доставку</button>
             </form>
         </div>
     </div>
-</body>
 
-</html>
+
+</body></html>
